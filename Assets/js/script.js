@@ -11,12 +11,18 @@ $(document).ready(function () {
     var textEl = $(".description")
     for(var i = 0; i < textEl.length; i++) {
      var time =  $(textEl[i]).parent().attr("id");
-     $(textEl[i]).addClass("present"); //logic needed to change colors
-     console.log(time)
      $(textEl[i]).val(localStorage.getItem(time))
+     //logic needed to change colors
+     if(time < moment()) {
+          $(textEl[i]).addClass("past"); //logic needed to change colors
+     }
+     if(time == moment()) {
+        $(textEl[i]).addClass("present");   
+     }
 
+     if(time > moment()) {
+        $(textEl[i]).addClass("future");   
+     }
     }
-
-    //localStorage.getItem(time,  )
 })
 
